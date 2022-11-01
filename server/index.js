@@ -1,11 +1,22 @@
-const express = require('express')
-const mongoose = require('mongoose')
-require("dotenv").config()
-const cors = require("cors")
+const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
+const cors = require("cors");
 const app = express();
+const userRoute = require("./routes/user.route");
 
+const connection = require("./config/config");
 
-
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.listen(8080,()=>{console.log('server is running on http://localhost:8080')}) 
+
+app.use("/auth", userRoute);
+
+app.listen(8080, () => {
+  try {
+    connection()
+    console.log("server is running on http://localhost:8080");
+  } catch (err) {
+    console.log(err);
+  }
+});
