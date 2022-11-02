@@ -11,13 +11,19 @@ const userReducer = (state = initState, { payload, type }) => {
     case "SIGNUP_SUCCESSFULL":
       return {
         ...state,
-        payload,
+        ...payload,
       };
     case "LOGIN_SUCCESSFULL":
       console.log("payload in reducer", payload);
       return {
         ...state,
         token: payload.token,
+      };
+
+    case "VERIFIED_ROLE_SUCCESSFULL":
+      return {
+        ...state,
+        role: payload.role,
       };
     default:
       return state;

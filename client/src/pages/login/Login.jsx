@@ -2,13 +2,14 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogin } from "../../redux/user/action";
+import { Navigate, useNavigate } from "react-router";
+import { userLogin, verifyRole } from "../../redux/user/action";
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
-  const { token } = useSelector((state) => state.user);
+  const { token, role } = useSelector((state) => state.user);
   const handleSubmit = (e) => {
     e.preventDefault();
     const person = {
@@ -18,11 +19,27 @@ const Login = () => {
     dispatch(userLogin(person));
   };
 
-  useEffect(()=>{
-      localStorage.setItem("token", JSON.stringify(token));
-      console.log("token received", token);
-  },[token])
+  useEffect(() => {
+    if (token) {
+      try {
+        localStorage.setItem("token", JSON.stringify(token));
+        console.log("token received", token);
+        dispatch(verifyRole(token));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }, [token]);
+  // console.log("role", role);
 
+  useEffect(() => {
+    console.log("role in login", role);
+    if (role && role == "user") {
+      navigate("/user");
+    } else if (role && role == "admin") {
+      navigate("/admin");
+    }
+  }, [role]);
   return (
     <>
       <form onSubmit={handleSubmit}>
