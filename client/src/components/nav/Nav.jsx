@@ -1,10 +1,10 @@
 import React from "react";
 
-const Nav = () => {
+const Navbar = () => {
   return <>
   
   </>
   ;
 };
 
-export default Nav;
+export default Navbar;

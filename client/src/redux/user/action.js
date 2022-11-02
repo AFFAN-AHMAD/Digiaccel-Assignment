@@ -6,7 +6,7 @@ export const actionTypes = {
 };
 
 export const userSignup = (payload) => (dispatch) => {
-  console.log("payload", payload);
+  // console.log("payload", payload);
   axios
     .post("http://localhost:8080/auth/signup", payload)
     .then((res) => {
@@ -16,4 +16,14 @@ export const userSignup = (payload) => (dispatch) => {
     .catch((er) => {
       console.log(er, "signup failed");
     });
+};
+
+export const userLogin = (payload) => (dispatch) => {
+  axios
+    .post("http://localhost:8080/auth/login", payload)
+    .then((res) => {
+      console.log(res);
+      dispatch({ type: actionTypes.LOGIN_SUCCESSFULL, payload: res.data });
+    })
+    .catch((err) => console.log(err));
 };
