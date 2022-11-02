@@ -12,9 +12,9 @@ app.use(express.json());
 
 app.use("/auth", userRoute);
 
-app.listen(8080, () => {
+app.listen(8080, async() => {
   try {
-    connection()
+    await connection
     console.log("server is running on http://localhost:8080");
   } catch (err) {
     console.log(err);
