@@ -5,11 +5,15 @@ export const actionTypes = {
   LOGIN_SUCCESSFULL: "LOGIN_SUCCESSFULL",
 };
 
-export const userSignup = (payload = (dispatch) => {
+export const userSignup = (payload) => (dispatch) => {
+  console.log("payload", payload);
   axios
     .post("http://localhost:8080/auth/signup", payload)
-    .then((res) => dispatch({ type: actionTypes.LOGIN_SUCCESSFULL, payload }))
+    .then((res) => {
+      console.log(res.data, "data");
+      dispatch({ type: actionTypes.SIGNUP_SUCCESSFULL, payload: res.data });
+    })
     .catch((er) => {
-      console.log(err,"signup failed");
+      console.log(er, "signup failed");
     });
-});
+};

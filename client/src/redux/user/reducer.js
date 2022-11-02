@@ -1,3 +1,5 @@
+
+
 const initState = {
   name: "",
   email: "",
@@ -7,7 +9,7 @@ const initState = {
 
 const userReducer = (state = initState, { payload, type }) => {
   switch (type) {
-    case SIGNUP_SUCCESSFULL:
+    case "SIGNUP_SUCCESSFULL":
       return {
         ...state,
         payload,
