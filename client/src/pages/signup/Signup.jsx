@@ -1,7 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import {userSignup} from "../../redux/user/action"
 const Signup = () => {
+const dispatch=useDispatch();
+
+
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
@@ -14,10 +18,7 @@ const Signup = () => {
       password,
       role,
     };
-
-    axios.post("http://localhost:8080/auth/signup", () => {
-      
-    });
+  dispatch(userSignup(person));
   };
 
   return (

@@ -8,11 +8,8 @@ export const actionTypes = {
 export const userSignup = (payload = (dispatch) => {
   axios
     .post("http://localhost:8080/auth/signup", payload)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-    })
+    .then((res) => dispatch({ type: actionTypes.LOGIN_SUCCESSFULL, payload }))
     .catch((er) => {
-      console.log(er);
+      console.log(err,"signup failed");
     });
 });
