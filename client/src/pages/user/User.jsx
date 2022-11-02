@@ -6,7 +6,11 @@ const User = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.user);
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token]);
   return <div>User</div>;
 };
 
