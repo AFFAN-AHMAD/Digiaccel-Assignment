@@ -1,2 +1,2 @@
-const actionReducer = () => {};
-export default actionReducer;
+const userReducer = () => {};
+export default userReducer;
