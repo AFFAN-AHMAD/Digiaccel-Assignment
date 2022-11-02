@@ -52,9 +52,17 @@ const Signup = () => {
             <option value={"user"}>User</option>
           </select>
         </div>
-        <div className={styles.inputContainers} style={{ border: 'none' }}>
+        <div className={styles.inputContainers} style={{ border: "none" }}>
           {/* <label></label> */}
-          <input type="submit" />
+          <input
+            type="submit"
+            style={{
+              height: "40px",
+              padding: "10px",
+              fontSize: "20px",
+              borderRadius: "10%",
+            }}
+          />
         </div>
       </form>
     </div>

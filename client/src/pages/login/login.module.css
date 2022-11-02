@@ -1,0 +1,41 @@
+.container {
+    /* border: 1px solid red; */
+    margin: 0px auto;
+    text-align: center;
+    width: 40%;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+form {
+    border: 3px solid gray;
+    /* height: 400px; */
+    border-radius: 10%;
+}
+
+.inputContainers {
+    display: block;
+    gap: 10px;
+    margin-top: 10px;
+    text-align: center;
+    border-bottom: 1px solid white;
+    padding: 5px 5px 10px;
+    height: 70px
+}
+
+label {
+    height: 30px;
+    font-size: 35px;
+    /* width: 50%; */
+}
+
+input,
+select {
+    /* width:120px; */
+    text-align: center;
+    display: block;
+    margin: auto;
+    height: 20px;
+}

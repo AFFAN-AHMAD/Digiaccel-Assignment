@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router";
 import { userLogin, verifyRole } from "../../redux/user/action";
+import styles from "./login.module.css";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -41,21 +42,22 @@ const Login = () => {
     }
   }, [role]);
   return (
-    <>
+    <div className={styles.container}>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input type="submit" />
+        <div className={styles.inputContainers}>
+          <label>Email</label>
+          <input type="text" onChange={(e) => setEmail(e.target.value)} />
+        </div>
+        <div className={styles.inputContainers}>
+          <label>Password</label>
+          <input type="text" onChange={(e) => setPassword(e.target.value)} />
+        </div>{" "}
+        <div className={styles.inputContainers} style={{ border: "none" }}>
+          <input type="submit" style={{height:'40px',padding:"10px",fontSize:"20px",borderRadius:"10%"}} />
+        </div>
       </form>
-    </>
+    </div>
   );
 };
 
