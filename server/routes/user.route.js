@@ -19,9 +19,9 @@ userRoute.get("/verifyUserRole", protect, verifyUserRole);
 userRoute.get("/createQuiz", protect, createQuiz);
 
 // for adding a question having only one answer correct
-userRoute.get("/addQuestion", protect, addQuestion);
+userRoute.post("/addQuestion", protect, addQuestion);
 
 // for adding a question having more than one answers correct
-userRoute.get("/twoOrMore", protect, twoOrMoreCorrect);
+userRoute.post("/twoOrMore", protect, twoOrMoreCorrect);
 
 module.exports = userRoute;
