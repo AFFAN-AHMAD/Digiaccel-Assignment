@@ -54,7 +54,21 @@ const Login = () => {
           <input type="text" onChange={(e) => setPassword(e.target.value)} />
         </div>{" "}
         <div className={styles.inputContainers} style={{ border: "none" }}>
-          <input type="submit" style={{height:'40px',padding:"10px",fontSize:"20px",borderRadius:"10%"}} />
+          <input
+            type="submit"
+            style={{
+              height: "40px",
+              padding: "10px",
+              fontSize: "20px",
+              borderRadius: "10%",
+            }}
+          />
+          <p>
+            dont have an account?{" "}
+            <span onClick={() => navigate("/")} style={{ color: "blue" }}>
+             create one!!
+            </span>{" "}
+          </p>
         </div>
       </form>
     </div>

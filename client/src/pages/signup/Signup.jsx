@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { userSignup } from "../../redux/user/action";
 import styles from "./signup.module.css";
 const Signup = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
@@ -63,6 +64,10 @@ const Signup = () => {
               borderRadius: "10%",
             }}
           />
+          <p>
+            already have an account?{" "}
+            <span onClick={() => navigate("/login")} style={{color:"blue"}}>move to login</span>{" "}
+          </p>
         </div>
       </form>
     </div>

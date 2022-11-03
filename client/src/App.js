@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Signup from "./pages/signup/Signup";
 import { Routes, Route } from "react-router-dom";
