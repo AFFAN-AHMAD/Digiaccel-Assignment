@@ -43,18 +43,27 @@ const Login = () => {
   }, [role]);
   return (
     <div className={styles.container}>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className={styles.h1}>Login</h1>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputContainers}>
-          <label>Email</label>
-          <input type="text" onChange={(e) => setEmail(e.target.value)} />
+          <label className={styles.label}>Email</label>
+          <input
+            className={styles.input}
+            type="text"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div className={styles.inputContainers}>
-          <label>Password</label>
-          <input type="text" onChange={(e) => setPassword(e.target.value)} />
+          <label className={styles.label}>Password</label>
+          <input
+            className={styles.input}
+            type="text"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>{" "}
         <div className={styles.inputContainers} style={{ border: "none" }}>
           <input
+            className={styles.input}
             type="submit"
             style={{
               height: "40px",
@@ -66,7 +75,7 @@ const Login = () => {
           <p>
             dont have an account?{" "}
             <span onClick={() => navigate("/")} style={{ color: "blue" }}>
-             create one!!
+              create one!!
             </span>{" "}
           </p>
         </div>

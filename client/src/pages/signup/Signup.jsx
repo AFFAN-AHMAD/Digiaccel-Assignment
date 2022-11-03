@@ -25,23 +25,35 @@ const Signup = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className={styles.h1}>Sign Up</h1>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputContainers}>
-          <label>Name</label>
-          <input type="text" onChange={(e) => setName(e.target.value)} />
+          <label className={styles.label}>Name</label>
+          <input
+            className={styles.input}
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
         <div className={styles.inputContainers}>
-          <label>Email</label>
-          <input type="text" onChange={(e) => setEmail(e.target.value)} />
+          <label className={styles.label}>Email</label>
+          <input
+            className={styles.input}
+            type="text"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div className={styles.inputContainers}>
-          <label>Password</label>
-          <input type="text" onChange={(e) => setPassword(e.target.value)} />
+          <label className={styles.label}>Password</label>
+          <input
+            className={styles.input}
+            type="text"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
 
         <div className={styles.inputContainers}>
-          <label>Role</label>
+          <label className={styles.label}>Role</label>
           <select
             onChange={(e) => {
               setRole(e.target.value);
@@ -56,6 +68,7 @@ const Signup = () => {
         <div className={styles.inputContainers} style={{ border: "none" }}>
           {/* <label></label> */}
           <input
+            className={styles.input}
             type="submit"
             style={{
               height: "40px",
@@ -66,7 +79,9 @@ const Signup = () => {
           />
           <p>
             already have an account?{" "}
-            <span onClick={() => navigate("/login")} style={{color:"blue"}}>move to login</span>{" "}
+            <span onClick={() => navigate("/login")} style={{ color: "blue" }}>
+              move to login
+            </span>{" "}
           </p>
         </div>
       </form>
