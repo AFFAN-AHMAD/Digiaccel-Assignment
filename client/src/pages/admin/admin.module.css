@@ -2,4 +2,22 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    height: 100%;
+    margin: 40px 0px;
+    box-sizing: border-box;
+}
+
+.questContainer{
+    border: 1px solid red;
+    text-align: center;
+    width: 44%;
+    border: 1px solid white;
+    height: 100%;
+}
+
+.select{
+    margin: 20px;
+}
+.label{
+    font-size: 30px;
 }
