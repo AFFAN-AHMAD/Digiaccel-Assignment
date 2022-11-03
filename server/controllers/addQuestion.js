@@ -2,11 +2,12 @@ const OneAnswerModel = require("../models/OneCorrectAnswer.model");
 
 const addQuestion = async (req, res) => {
   try {
-    let { question, correctAnswer, allAnswers } = req.body;
+    let { question, correctAnswer, allAnswers,difficulty } = req.body;
     let quest = await OneAnswerModel({
       question,
       allAnswers,
       correctAnswer,
+      difficulty
     });
     quest.save();
     return res.status(200).send("question is created sucessfully");
