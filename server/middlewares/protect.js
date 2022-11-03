@@ -1,9 +1,9 @@
-const userModel = require("../models/User.model");
+const UserModel = require("../models/User.model");
 const verifyToken = require("../controllers/verifyToken");
 
 const protect = async (req, res, next) => {
-  const token = req.cookies.token;
-  console.log(token);
+  const token = req.headers.token;
+  console.log("token in protect.js",token);
   if (!token) {
     return res.status(401).json({ message: "No Token provided" });
   }
@@ -17,7 +17,7 @@ const protect = async (req, res, next) => {
 
   let UserData;
   try {
-    UserData = await User.findById(payload.id);
+    UserData = await UserModel.findById(payload.id);
   } catch (err) {
     return res.status(500).json({ err: err.message });
   }
