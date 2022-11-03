@@ -9,6 +9,9 @@
 .question{
     display: block;
 }
+.inputsContainer{
+    margin-top: 5px;
+}
 .input,
 .select ,
 .textarea{

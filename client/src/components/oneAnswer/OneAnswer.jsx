@@ -22,17 +22,17 @@ const OneAnswer = () => {
               console.log(e.target.value);
               setQuestion(e.target.value);
             }}
-            style={{minWidth:"350px",minHeight:"50px",marginTop:"4px"}}
+            style={{ minWidth: "350px", minHeight: "50px", marginTop: "4px" }}
           ></textarea>
         </div>
-        <div>
+        <div className={styles.inputsContainer}>
           <label className={styles.label}>Correct Answer</label>
           <textarea
             className={styles.textarea}
             onChange={(e) => setCorrectAnswer(e.target.value)}
           ></textarea>
         </div>
-        <div>
+        <div className={styles.inputsContainer}>
           <label className={styles.label}>Incorrect Answers</label>
           <div>
             <label className={styles.label}>1</label>
@@ -41,14 +41,14 @@ const OneAnswer = () => {
               onChange={(e) => setIncorrectAnswer1(e.target.value)}
             ></textarea>
           </div>
-          <div>
+          <div className={styles.inputsContainer}>
             <label className={styles.label}>2</label>
             <textarea
               className={styles.textarea1}
               onChange={(e) => setIncorrectAnswer2(e.target.value)}
             ></textarea>{" "}
           </div>
-          <div>
+          <div className={styles.inputsContainer}>
             <label className={styles.label}>3</label>
             <textarea
               className={styles.textarea1}
@@ -56,8 +56,9 @@ const OneAnswer = () => {
             ></textarea>{" "}
           </div>
         </div>
-
-        <input type="submit"/>
+        <div className={styles.inputsContainer}>
+          <input type="submit" />
+        </div>
       </form>
     </div>
   );
