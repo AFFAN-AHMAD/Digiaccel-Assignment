@@ -15,11 +15,12 @@ const OneAnswer = () => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    allAnswers.push(correctAnswer);
-    allAnswers.push(incorrectAnswer1);
-    allAnswers.push(incorrectAnswer2);
-    allAnswers.push(incorrectAnswer3);
-
+    setAllAnswers(
+      correctAnswer,
+      incorrectAnswer1,
+      incorrectAnswer2,
+      incorrectAnswer3
+    );
     let quest = {
       question,
       correctAnswer,

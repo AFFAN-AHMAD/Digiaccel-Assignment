@@ -28,3 +28,25 @@ export const addOneCorrect =
         console.log(er, "could not add the question");
       });
   };
+
+export const addTwoAnswersCorrect =
+  ({ quest, token }) =>
+  (dispatch) => {
+    console.log("token in addTwoAnswersCorrect Action", token);
+    axios
+      .post("http://localhost:8080/auth/twoOrMore", quest, {
+        headers: {
+          token: token,
+        },
+      })
+      .then((res) => {
+        console.log("data in action in quiz", res.data);
+        dispatch({
+          type: actionTypes.ADD_TWO_ANSWERS_CORRECT,
+          payload: res.data,
+        });
+      })
+      .catch((er) => {
+        console.log(er, "could not add the question");
+      });
+  };

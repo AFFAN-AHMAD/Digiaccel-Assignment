@@ -1,16 +1,41 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addTwoAnswersCorrect } from "../../redux/quiz/action";
 import styles from "./two.module.css";
 const TwoAnswers = () => {
   const [question, setQuestion] = useState("");
-  const [correctAnswers, setCorrectAnswers] = useState([]);
+  const [correctAnswer, setCorrectAnswers] = useState([]);
   const [correctAnswer1, setCorrectAnswer1] = useState("");
   const [correctAnswer2, setCorrectAnswer2] = useState("");
   const [allAnswers, setAllAnswers] = useState([]);
+  const [difficulty, setDifficulty] = useState(1);
   const [incorrectAnswer1, setIncorrectAnswer1] = useState("");
   const [incorrectAnswer2, setIncorrectAnswer2] = useState("");
+
+  const { token } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
+    //  correct answers array
+    setCorrectAnswers([correctAnswer1, correctAnswer2]);
+
+    // all answers array
+    setAllAnswers([
+      correctAnswer1,
+      correctAnswer2,
+      incorrectAnswer1,
+      incorrectAnswer2,
+    ]);
+
+    let quest = {
+      question,
+      correctAnswer,
+      allAnswers,
+      difficulty,
+    };
+    console.log(quest)
+    dispatch(addTwoAnswersCorrect({ quest, token }));
   };
   return (
     <div className={styles.container}>
@@ -29,6 +54,21 @@ const TwoAnswers = () => {
               setQuestion(e.target.value);
             }}
           ></textarea>
+        </div>
+        <div>
+          <label>Difficulty</label>
+          <select onChange={(e) => setDifficulty(e.target.value)}>
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+            <option value={6}>6</option>
+            <option value={7}>7</option>
+            <option value={8}>8</option>
+            <option value={9}>9</option>
+            <option value={10}>10</option>
+          </select>
         </div>
         <div>
           <label className={styles.label}>Correct Answers</label>

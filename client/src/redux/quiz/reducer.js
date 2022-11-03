@@ -12,6 +12,11 @@ const quizReducer = (state = init, { type, payload }) => {
         ...state,
         oneCorrect: [...state.oneCorrect, payload],
       };
+    case "ADD_TWO_ANSWERS_CORRECT":
+      return {
+        ...state,
+        twoCorrect: [...state.twoCorrect, payload],
+      };
     default:
       return state;
   }
