@@ -16,7 +16,7 @@ userRoute.post("/login", login);
 userRoute.get("/verifyUserRole", protect, verifyUserRole);
 
 // for creating a quiz
-userRoute.get("/createQuiz", protect, createQuiz);
+userRoute.post("/createQuiz", protect, createQuiz);
 
 // for adding a question having only one answer correct
 userRoute.post("/addQuestion", protect, addQuestion);
