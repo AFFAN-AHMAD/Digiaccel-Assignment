@@ -12,7 +12,7 @@ export const addOneCorrect =
   (dispatch) => {
     console.log("token in addOneCorrect Action", token);
     axios
-      .post("http://localhost:8080/auth/addQuestion", quest, {
+      .post("https://digiassignment.herokuapp.com/auth/addQuestion", quest, {
         headers: {
           token: token,
         },
@@ -34,7 +34,7 @@ export const addTwoAnswersCorrect =
   (dispatch) => {
     console.log("token in addTwoAnswersCorrect Action", token);
     axios
-      .post("http://localhost:8080/auth/twoOrMore", quest, {
+      .post("https://digiassignment.herokuapp.com/auth/twoOrMore", quest, {
         headers: {
           token: token,
         },

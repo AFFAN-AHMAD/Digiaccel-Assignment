@@ -13,11 +13,15 @@ const Admin = () => {
     e.preventDefault();
     if (token) {
       axios
-        .post("http://localhost:8080/auth/createQuiz", typeOfQuiz, {
-          headers: {
-            token: token,
-          },
-        })
+        .post(
+          "https://digiassignment.herokuapp.com/auth/createQuiz",
+          typeOfQuiz,
+          {
+            headers: {
+              token: token,
+            },
+          }
+        )
         .then((res) => {
           console.log(res.data);
           setQuestions(res.data);
