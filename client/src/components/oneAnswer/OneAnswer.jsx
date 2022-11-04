@@ -91,7 +91,7 @@ const OneAnswer = () => {
           </div>
         </div>
         <div className={styles.inputsContainer}>
-          <input type="submit" />
+          <input type="submit" placeholder="Add" />
         </div>
       </form>
     </div>

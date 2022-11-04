@@ -14,7 +14,13 @@
     border: 1px solid white;
     height: 100%;
 }
-
+.quizContainer{
+    border:1px solid gray;
+    padding: 50px;
+    box-sizing: border-box;
+    width: 40%;
+    text-align: center;
+}
 .select{
     margin: 20px;
 }
