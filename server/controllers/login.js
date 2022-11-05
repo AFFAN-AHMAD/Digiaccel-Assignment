@@ -48,6 +48,8 @@ const login = (req, res) => {
       .catch((err) => res.send(err));
   } catch (err) {
     res.send(err);
+  }finally{
+    return
   }
 };
 
