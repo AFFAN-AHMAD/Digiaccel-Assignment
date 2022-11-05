@@ -2,26 +2,33 @@ import axios from "axios";
 
 export const actionTypes = {
   SIGNUP_SUCCESSFULL: "SIGNUP_SUCCESSFULL",
+  SIGNUP_FAILED: "SIGNUP_FAILED",
+
   LOGIN_SUCCESSFULL: "LOGIN_SUCCESSFULL",
   VERIFIED_ROLE_SUCCESSFULL: "VERIFIED_ROLE_SUCCESSFULL",
 };
 
 export const userSignup = (payload) => (dispatch) => {
-  // console.log("payload", payload);
+  console.log("payload", payload);
   axios
-    .post("https://digiassignment.herokuapp.com/auth/signup", payload)
+    .post("http://localhost:8080/auth/signup", payload)
     .then((res) => {
       console.log(res.data, "data");
       dispatch({ type: actionTypes.SIGNUP_SUCCESSFULL, payload: res.data });
     })
     .catch((er) => {
-      console.log(er, "signup failed");
+      // console.log(er, "signup failed");
+      console.log("message", er.response.data.message);
+      dispatch({
+        type: actionTypes.SIGNUP_FAILED,
+        payload: er.response.data.message,
+      });
     });
 };
 
 export const userLogin = (payload) => (dispatch) => {
   axios
-    .post("https://digiassignment.herokuapp.com/auth/login", payload)
+    .post("http://localhost:8080/auth/login", payload)
     .then((res) => {
       console.log(res);
       dispatch({ type: actionTypes.LOGIN_SUCCESSFULL, payload: res.data });
@@ -32,13 +39,13 @@ export const userLogin = (payload) => (dispatch) => {
 export const verifyRole = (payload) => (dispatch) => {
   console.log("token in verifyRole in action", payload);
   axios
-    .get("https://digiassignment.herokuapp.com/auth/verifyUserRole", {
+    .get("http://localhost:8080/auth/verifyUserRole", {
       headers: {
         token: payload,
       },
     })
     .then((res) => {
-      console.log("data in verifyRole in action",res.data);
+      console.log("data in verifyRole in action", res.data);
       dispatch({
         type: actionTypes.VERIFIED_ROLE_SUCCESSFULL,
         payload: res.data,

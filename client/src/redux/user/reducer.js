@@ -4,6 +4,7 @@ const initState = {
   password: "",
   role: "",
   token: "",
+  signupMessage: "",
 };
 
 const userReducer = (state = initState, { payload, type }) => {
@@ -11,7 +12,14 @@ const userReducer = (state = initState, { payload, type }) => {
     case "SIGNUP_SUCCESSFULL":
       return {
         ...state,
-        ...payload,
+        // ...payload,
+        signupMessage: "User saved successfully",
+      };
+    case "SIGNUP_FAILED":
+      console.log("payload in signupo failed", payload);
+      return {
+        ...state,
+        signupMessage: payload,
       };
     case "LOGIN_SUCCESSFULL":
       console.log("payload in reducer", payload);

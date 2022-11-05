@@ -1,9 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { userSignup } from "../../redux/user/action";
 import styles from "./signup.module.css";
+import { useToast } from "@chakra-ui/react";
+import { checkPassword } from "./checkPassword";
 const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -12,8 +14,30 @@ const Signup = () => {
   let [password, setPassword] = useState("");
   let [role, setRole] = useState("");
 
+  // message after signing up
+  const { signupMessage } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (signupMessage == "User saved successfully") {
+      alert(signupMessage);
+      navigate("/login");
+    } else if (signupMessage == "User already exists") {
+      alert(signupMessage);
+    }
+  }, [signupMessage]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    let res = checkPassword(password);
+
+    if (!res.flag) {
+      return alert(res.message);
+    }
+
+    if (!name || !email || !password || !role) {
+      alert("all feilds are required");
+    }
+
     const person = {
       name,
       email,
