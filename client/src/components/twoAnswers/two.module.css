@@ -3,6 +3,9 @@
   
 }
 
+.container>label {
+    margin: "10px"
+}
 .label {
   height: 30px;
   font-size: 35px;
@@ -17,6 +20,9 @@
 
 .inputsContainer {
   margin-top: 5px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
 
 .select {
@@ -24,8 +30,6 @@
   display: block;
   margin: auto;
   height: 20px;
-}
-.select {
   width: 120px;
 }
 
@@ -35,4 +39,5 @@
   max-width: 250px;
   min-height: 30px;
   max-height: 30px;
+    /* border: 1px solid red; */
 }

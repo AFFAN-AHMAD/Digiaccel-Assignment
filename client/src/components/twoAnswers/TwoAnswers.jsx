@@ -16,6 +16,15 @@ const TwoAnswers = () => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (
+      !question ||
+      !correctAnswer1 ||
+      !correctAnswer2 ||
+      !incorrectAnswer1 ||
+      !incorrectAnswer2
+    ) {
+      return alert("all feilds required");
+    }
 
     //  correct answers array
     setCorrectAnswers([correctAnswer1, correctAnswer2]);
@@ -75,14 +84,14 @@ const TwoAnswers = () => {
         </div>
         <div>
           <label className={styles.label}>Correct Answers</label>
-          <div>
+          <div className={styles.inputsContainer}>
             <label className={styles.label}>1</label>{" "}
             <textarea
               className={styles.textarea}
               onChange={(e) => setCorrectAnswer1(e.target.value)}
             ></textarea>
           </div>
-          <div>
+          <div className={styles.inputsContainer}>
             <label className={styles.label}>2</label>
             <textarea
               className={styles.textarea}
@@ -90,16 +99,16 @@ const TwoAnswers = () => {
             ></textarea>
           </div>
         </div>
-        <div>
+        <div style={{ marginTop: "20px" }}>
           <label className={styles.label}>Incorrect Answers</label>
-          <div>
+          <div className={styles.inputsContainer}>
             <label className={styles.label}>1</label>
             <textarea
               className={styles.textarea}
               onChange={(e) => setIncorrectAnswer1(e.target.value)}
             ></textarea>
           </div>
-          <div>
+          <div className={styles.inputsContainer}>
             <label className={styles.label}>2</label>
             <textarea
               className={styles.textarea}
