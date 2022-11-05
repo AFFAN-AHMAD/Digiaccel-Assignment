@@ -12,9 +12,8 @@ const login = (req, res) => {
       return res.status(422).send("All fields required");
     }
     // finding the user in the database
-    UserModel
-      .findOne({ email })
-      .then(  async (validation) => {
+    UserModel.findOne({ email })
+      .then(async (validation) => {
         console.log("validation", validation);
 
         // comparing the entered password and the password stored at the time of signing up
@@ -42,14 +41,14 @@ const login = (req, res) => {
           console.log("token", token);
           return res.status(200).send({ token, message: "Account Verified" });
         } else {
-          return res.status(422).send({ message: "Verification Failed" });
+          return res.status(422).send({ message: "Wrong Password" });
         }
       })
-      .catch((err) => res.send(err));
+      .catch(() => res.status(422).send({ message: "Invalid email" }));
   } catch (err) {
-    res.send(err);
-  }finally{
-    return
+    return res.status(500).send({ message: "Internal Server Error" });
+  } finally {
+    return;
   }
 };
 

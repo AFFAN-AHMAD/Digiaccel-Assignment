@@ -10,9 +10,12 @@ const Login = () => {
   const dispatch = useDispatch();
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
-  const { token, role } = useSelector((state) => state.user);
+  const { token, role, loginMessage } = useSelector((state) => state.user);
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!email || !password) {
+      return alert("all feilds required");
+    }
     const person = {
       email,
       password,
@@ -31,6 +34,20 @@ const Login = () => {
       }
     }
   }, [token]);
+
+  useEffect(() => {
+    if (loginMessage == "Account Verified") {
+      alert(loginMessage);
+      navigate("/login");
+    } else if (loginMessage == "Wrong Password") {
+      return alert(loginMessage);
+    } else if (loginMessage == "Invalid email") {
+      return alert(loginMessage);
+    } else if (loginMessage == "Internal Server Error") {
+      return alert(loginMessage);
+    }
+  }, [loginMessage]);
+
   // console.log("role", role);
 
   useEffect(() => {
@@ -74,7 +91,7 @@ const Login = () => {
           />
           <p>
             dont have an account?{" "}
-            <span onClick={() => navigate("/")} style={{ color: "blue" }}>
+            <span onClick={() => navigate("/")} style={{ color: "whitesmoke" }}>
               create one!!
             </span>{" "}
           </p>

@@ -1,10 +1,14 @@
 import axios from "axios";
 
 export const actionTypes = {
+  // signup actions
   SIGNUP_SUCCESSFULL: "SIGNUP_SUCCESSFULL",
   SIGNUP_FAILED: "SIGNUP_FAILED",
 
+  // login actions
   LOGIN_SUCCESSFULL: "LOGIN_SUCCESSFULL",
+  LOGIN_FAILED: "LOGIN_FAILED",
+
   VERIFIED_ROLE_SUCCESSFULL: "VERIFIED_ROLE_SUCCESSFULL",
 };
 
@@ -30,10 +34,16 @@ export const userLogin = (payload) => (dispatch) => {
   axios
     .post("http://localhost:8080/auth/login", payload)
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       dispatch({ type: actionTypes.LOGIN_SUCCESSFULL, payload: res.data });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      // console.log(err.response.data.message);
+      dispatch({
+        type: actionTypes.LOGIN_FAILED,
+        payload: err.response.data.message,
+      });
+    });
 };
 
 export const verifyRole = (payload) => (dispatch) => {

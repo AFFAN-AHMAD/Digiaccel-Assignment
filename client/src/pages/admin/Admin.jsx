@@ -7,7 +7,7 @@ import styles from "./admin.module.css";
 const Admin = () => {
   const [typeOfQuest, setTypeOfQuest] = useState("type1");
   const [typeOfQuiz, setTypeOfQuiz] = useState("type1");
-  const { token } = useSelector((state) => state.user);
+  const { token, name } = useSelector((state) => state.user);
   const [questions, setQuestions] = useState([]);
   const createQuiz = (e) => {
     e.preventDefault();
@@ -31,7 +31,10 @@ const Admin = () => {
   useEffect(() => {}, [questions]);
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>ADMIN PANEL</h1>
+      <div>
+        <h1 style={{ textAlign: "center" }}>ADMIN PANEL</h1>
+        <h3>{name}</h3>
+      </div>
       <div className={styles.container}>
         <div className={styles.questContainer}>
           <h1>Add a question</h1>

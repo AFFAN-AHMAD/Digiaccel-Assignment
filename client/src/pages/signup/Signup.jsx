@@ -30,7 +30,7 @@ const Signup = () => {
   }, [signupMessage]);
 
   const handleSubmit = (e) => {
-    console.log("submitted");
+    // console.log("submitted");
     e.preventDefault();
     if (!name || !email || !password || !role) {
       return alert("all feilds required");
@@ -100,7 +100,7 @@ const Signup = () => {
             className={styles.select}
             onChange={(e) => {
               setRole(e.target.value);
-              console.log(e.target.value);
+              // console.log(e.target.value);
             }}
           >
             <option>select role</option>
