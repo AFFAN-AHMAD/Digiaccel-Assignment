@@ -1,44 +1,50 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./oneAnswer.module.css";
-import { addOneCorrect } from "../../redux/quiz/action";
-const OneAnswer = () => {
+import { addTwoAnswersCorrect } from "../../../redux/quiz/action";
+import styles from "./two.module.css";
+const TwoAnswers = () => {
   const [question, setQuestion] = useState("");
-  const [correctAnswer, setCorrectAnswer] = useState("");
+  const [correctAnswer, setCorrectAnswers] = useState([]);
+  const [correctAnswer1, setCorrectAnswer1] = useState("");
+  const [correctAnswer2, setCorrectAnswer2] = useState("");
   const [allAnswers, setAllAnswers] = useState([]);
   const [difficulty, setDifficulty] = useState(1);
   const [incorrectAnswer1, setIncorrectAnswer1] = useState("");
   const [incorrectAnswer2, setIncorrectAnswer2] = useState("");
-  const [incorrectAnswer3, setIncorrectAnswer3] = useState("");
 
   const { token } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (
       !question ||
+      !correctAnswer1 ||
+      !correctAnswer2 ||
       !incorrectAnswer1 ||
-      !incorrectAnswer2 ||
-      !incorrectAnswer3 ||
-      !correctAnswer
+      !incorrectAnswer2
     ) {
-      return alert("all feilds are required");
+      return alert("all feilds required");
     }
-    setAllAnswers(
-      correctAnswer,
+
+    //  correct answers array
+    setCorrectAnswers([correctAnswer1, correctAnswer2]);
+
+    // all answers array
+    setAllAnswers([
+      correctAnswer1,
+      correctAnswer2,
       incorrectAnswer1,
       incorrectAnswer2,
-      incorrectAnswer3
-    );
+    ]);
+
     let quest = {
       question,
       correctAnswer,
       allAnswers,
       difficulty,
     };
-    console.log("quest in one quest", quest);
-    dispatch(addOneCorrect({ quest, token }));
+    console.log(quest);
+    dispatch(addTwoAnswersCorrect({ quest, token }));
   };
   return (
     <div className={styles.container}>
@@ -46,12 +52,16 @@ const OneAnswer = () => {
         <div className={styles.question}>
           <label className={styles.label}>Question</label>
           <textarea
-            className={styles.textarea}
+            style={{
+              minWidth: "350px",
+              minHeight: "50px",
+              display: "block",
+              margin: "auto",
+            }}
             onChange={(e) => {
               console.log(e.target.value);
               setQuestion(e.target.value);
             }}
-            style={{ minWidth: "350px", minHeight: "50px", marginTop: "4px" }}
           ></textarea>
         </div>
         <div>
@@ -60,9 +70,7 @@ const OneAnswer = () => {
             onChange={(e) => setDifficulty(e.target.value)}
             className={styles.select}
           >
-            <option value={1} className={styles.option}>
-              1
-            </option>
+            <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
             <option value={4}>4</option>
@@ -74,43 +82,46 @@ const OneAnswer = () => {
             <option value={10}>10</option>
           </select>
         </div>
-        <div className={styles.inputsContainer}>
-          <label className={styles.label}>Correct Answer</label>
-          <textarea
-            className={styles.textarea}
-            onChange={(e) => setCorrectAnswer(e.target.value)}
-          ></textarea>
+        <div>
+          <label className={styles.label}>Correct Answers</label>
+          <div className={styles.inputsContainer}>
+            <label className={styles.label}>1</label>{" "}
+            <textarea
+              className={styles.textarea}
+              onChange={(e) => setCorrectAnswer1(e.target.value)}
+            ></textarea>
+          </div>
+          <div className={styles.inputsContainer}>
+            <label className={styles.label}>2</label>
+            <textarea
+              className={styles.textarea}
+              onChange={(e) => setCorrectAnswer2(e.target.value)}
+            ></textarea>
+          </div>
         </div>
-        <div className={styles.inputsContainer}>
+        <div style={{ marginTop: "20px" }}>
           <label className={styles.label}>Incorrect Answers</label>
-          <div>
+          <div className={styles.inputsContainer}>
             <label className={styles.label}>1</label>
             <textarea
-              className={styles.textarea1}
+              className={styles.textarea}
               onChange={(e) => setIncorrectAnswer1(e.target.value)}
             ></textarea>
           </div>
           <div className={styles.inputsContainer}>
             <label className={styles.label}>2</label>
             <textarea
-              className={styles.textarea1}
+              className={styles.textarea}
               onChange={(e) => setIncorrectAnswer2(e.target.value)}
-            ></textarea>{" "}
-          </div>
-          <div className={styles.inputsContainer}>
-            <label className={styles.label}>3</label>
-            <textarea
-              className={styles.textarea1}
-              onChange={(e) => setIncorrectAnswer3(e.target.value)}
             ></textarea>{" "}
           </div>
         </div>
         <div className={styles.inputsContainer}>
-          <input type="submit" placeholder="Add" />
+          <input type="submit" />
         </div>
       </form>
     </div>
   );
 };
 
-export default OneAnswer;
+export default TwoAnswers;
