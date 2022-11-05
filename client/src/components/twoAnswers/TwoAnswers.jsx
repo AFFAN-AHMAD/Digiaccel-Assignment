@@ -34,7 +34,7 @@ const TwoAnswers = () => {
       allAnswers,
       difficulty,
     };
-    console.log(quest)
+    console.log(quest);
     dispatch(addTwoAnswersCorrect({ quest, token }));
   };
   return (
@@ -57,7 +57,10 @@ const TwoAnswers = () => {
         </div>
         <div>
           <label>Difficulty</label>
-          <select onChange={(e) => setDifficulty(e.target.value)}>
+          <select
+            onChange={(e) => setDifficulty(e.target.value)}
+            className={styles.select}
+          >
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>

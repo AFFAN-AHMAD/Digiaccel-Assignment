@@ -15,6 +15,16 @@ const OneAnswer = () => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (
+      !question ||
+      !incorrectAnswer1 ||
+      !incorrectAnswer2 ||
+      !incorrectAnswer3 ||
+      !correctAnswer
+    ) {
+      return alert("all feilds are required");
+    }
     setAllAnswers(
       correctAnswer,
       incorrectAnswer1,
@@ -46,8 +56,13 @@ const OneAnswer = () => {
         </div>
         <div>
           <label>Difficulty</label>
-          <select onChange={(e) => setDifficulty(e.target.value)}>
-            <option value={1}>1</option>
+          <select
+            onChange={(e) => setDifficulty(e.target.value)}
+            className={styles.select}
+          >
+            <option value={1} className={styles.option}>
+              1
+            </option>
             <option value={2}>2</option>
             <option value={3}>3</option>
             <option value={4}>4</option>

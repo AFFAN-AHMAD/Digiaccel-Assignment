@@ -1,36 +1,38 @@
 .container {
-    border: 1px solid yellow
+  /* border: 1px solid yellow */
+  
 }
 
 .label {
-    height: 30px;
-    font-size: 35px;
-    /* width: 50%; */
+  height: 30px;
+  font-size: 35px;
+  /* width: 50%; */
 }
 
 .question {
-    display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .inputsContainer {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
-/* .input,
-.select,
-.textarea {
-    text-align: center;
-    display: block;
-    margin: auto;
-    height: 20px;
-} */
-
+.select {
+  text-align: center;
+  display: block;
+  margin: auto;
+  height: 20px;
+}
+.select {
+  width: 120px;
+}
 
 .textarea,
 .textarea1 {
-    min-width: 250px;
-    max-width: 250px;
-    min-height: 30px;
-    max-height: 30px;
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 30px;
+  max-height: 30px;
 }

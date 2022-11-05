@@ -1,13 +1,18 @@
 .container{
-    border:1px solid yellow
+    /* border:1px solid yellow */
+}
+.container>label{
+    margin:"10px"
 }
 .label {
     height: 30px;
     font-size: 35px;
+    margin:30px 10px
     /* width: 50%; */
 }
 .question{
     display: block;
+    margin-bottom: 10px;
 }
 .inputsContainer{
     margin-top: 5px;
@@ -27,3 +32,8 @@
     min-height: 30px;
     max-height: 30px;
 }
+
+.select{
+    width:120px;
+}
+

@@ -33,7 +33,7 @@ const Admin = () => {
     <>
       <div>
         <h1 style={{ textAlign: "center" }}>ADMIN PANEL</h1>
-        <h3>{name}</h3>
+        <h3 style={{ textAlign: "center" }}>{name}</h3>
       </div>
       <div className={styles.container}>
         <div className={styles.questContainer}>

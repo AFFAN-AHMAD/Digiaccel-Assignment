@@ -1,25 +1,30 @@
 .container{
-    display: flex;
+    /* display: flex; */
     width: 100%;
     justify-content: space-between;
     height: 100%;
     margin: 20px auto;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .questContainer{
-    border: 1px solid red;
+    border: 1px solid white;
     text-align: center;
     width: 44%;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     height: 100%;
+    margin: auto;
+    margin-bottom: 70px;
+    padding: 20px
 }
 .quizContainer{
-    border:1px solid gray;
+    /* border:1px solid gray; */
     padding: 50px;
     box-sizing: border-box;
     width: 40%;
     text-align: center;
+    margin: auto;
 }
 .select{
     margin: 20px;
