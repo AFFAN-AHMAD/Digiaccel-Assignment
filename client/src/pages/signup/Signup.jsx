@@ -6,6 +6,7 @@ import { userSignup } from "../../redux/user/action";
 import styles from "./signup.module.css";
 import { useToast } from "@chakra-ui/react";
 import { checkPassword } from "./checkPassword";
+import toastr from "toastr";
 const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,25 +18,32 @@ const Signup = () => {
   // message after signing up
   const { signupMessage } = useSelector((state) => state.user);
 
+  // toast
+  const toast = useToast();
   useEffect(() => {
     if (signupMessage == "User saved successfully") {
       alert(signupMessage);
       navigate("/login");
     } else if (signupMessage == "User already exists") {
-      alert(signupMessage);
+      return alert(signupMessage);
     }
   }, [signupMessage]);
 
   const handleSubmit = (e) => {
+    console.log("submitted");
     e.preventDefault();
-    let res = checkPassword(password);
-
-    if (!res.flag) {
-      return alert(res.message);
-    }
-
     if (!name || !email || !password || !role) {
-      alert("all feilds are required");
+      return alert("all feilds required");
+    }
+    let res = checkPassword(password);
+    if (!res.flag) {
+      toast({
+        title: res.message,
+        status: "warning",
+        duration: 9000,
+        isClosable: true,
+      });
+      return alert(res.message);
     }
 
     const person = {
@@ -67,7 +75,10 @@ const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className={styles.inputContainers}>
+        <div
+          className={styles.inputContainers}
+          style={{ borderBottom: "none" }}
+        >
           <label className={styles.label}>Password</label>
           <input
             className={styles.input}
@@ -75,10 +86,18 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        <div className={styles.textContainer}>
+          {" "}
+          <p className={styles.p}>Required atleast 8 chracters consist of </p>
+          <p className={styles.p}>
+            1 lower case, 1 upper case, 1 numeric value and 1 special character
+          </p>
+        </div>
 
         <div className={styles.inputContainers}>
           <label className={styles.label}>Role</label>
           <select
+            className={styles.select}
             onChange={(e) => {
               setRole(e.target.value);
               console.log(e.target.value);
@@ -89,7 +108,10 @@ const Signup = () => {
             <option value={"user"}>User</option>
           </select>
         </div>
-        <div className={styles.inputContainers} style={{ border: "none" }}>
+        <div
+          className={styles.inputContainers}
+          style={{ border: "none", display: "block" }}
+        >
           {/* <label></label> */}
           <input
             className={styles.input}
@@ -99,11 +121,15 @@ const Signup = () => {
               padding: "10px",
               fontSize: "20px",
               borderRadius: "10%",
+              cursor: "pointer",
             }}
           />
           <p>
             already have an account?{" "}
-            <span onClick={() => navigate("/login")} style={{ color: "blue" }}>
+            <span
+              onClick={() => navigate("/login")}
+              style={{ color: "whitesmoke", cursor: "pointer" }}
+            >
               move to login
             </span>{" "}
           </p>
