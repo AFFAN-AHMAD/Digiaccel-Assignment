@@ -9,12 +9,14 @@ const connection = require("./config/config");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.get("/", "connected");
 
 app.use(cors());
 app.use("/auth", userRoute);
 
-app.listen(8080, async () => {
+app.get("/", (req, res) => {
+  res.send("connected");
+});
+app.listen(process.env.PORT || 8080, async () => {
   try {
     await connection;
     console.log("server is running on http://localhost:8080");
