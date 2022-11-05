@@ -32,6 +32,8 @@ const signup = async (req, res) => {
     return res.status(200).send({ message: "User saved successfully" });
   } catch (err) {
     return res.send(err);
+  }finally {
+    return
   }
 };
 

@@ -9,7 +9,7 @@ const connection = require("./config/config");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.get("/", "connected");
+app.get("/", "connected");
 
 app.use(cors());
 app.use("/auth", userRoute);
