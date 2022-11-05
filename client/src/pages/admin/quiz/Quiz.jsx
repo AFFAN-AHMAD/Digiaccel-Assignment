@@ -7,6 +7,7 @@ const Quiz = () => {
   const [typeOfQuiz, setTypeOfQuiz] = useState("type1");
   const { token } = useSelector((state) => state.user);
   const createQuiz = (e) => {
+    console.log("sub");
     e.preventDefault();
     if (token) {
       axios
@@ -28,14 +29,17 @@ const Quiz = () => {
   return (
     <div className={styles.quizContainer}>
       <h1>Generate a quiz</h1>
-      <div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <form onSubmit={(e) => createQuiz(e)}>
-          <label>Type of Quiz</label>
-          <select onChange={(e) => setTypeOfQuiz(e.target.value)}>
+          <label style={{ fontSize: "20px" }}>Type of Quiz</label>
+          <select
+            onChange={(e) => setTypeOfQuiz(e.target.value)}
+            style={{ display: "block", margin: "20px" }}
+          >
             <option value="type1">Only One Answer Correct</option>
             <option value="type2">More Than One Answer Correct</option>
           </select>
-          <input type="submit" />
+          <button type="submit">Generate</button>
         </form>
       </div>
 

@@ -1,7 +1,8 @@
 .quizContainer {
     padding: 50px;
     box-sizing: border-box;
-    width: 40%;
+    width: 70%;
     text-align: center;
     margin: auto;
+    border: 1px solid white;
 }

@@ -117,7 +117,9 @@ const TwoAnswers = () => {
           </div>
         </div>
         <div className={styles.inputsContainer}>
-          <input type="submit" />
+          <button className={styles.button} type="submit">
+            Add
+          </button>
         </div>
       </form>
     </div>

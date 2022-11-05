@@ -37,3 +37,7 @@
     width:120px;
 }
 
+.button {
+    width: 100px;
+    border-radius: 10%;
+}

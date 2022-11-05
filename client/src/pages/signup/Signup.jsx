@@ -113,7 +113,7 @@ const Signup = () => {
           style={{ border: "none", display: "block" }}
         >
           {/* <label></label> */}
-          <input
+          <button
             className={styles.input}
             type="submit"
             style={{
@@ -123,7 +123,9 @@ const Signup = () => {
               borderRadius: "10%",
               cursor: "pointer",
             }}
-          />
+          >
+            Signup
+          </button>
           <p>
             already have an account?{" "}
             <span

@@ -79,7 +79,7 @@ const Login = () => {
           />
         </div>{" "}
         <div className={styles.inputContainers} style={{ border: "none" }}>
-          <input
+          <button
             className={styles.input}
             type="submit"
             style={{
@@ -88,7 +88,9 @@ const Login = () => {
               fontSize: "20px",
               borderRadius: "10%",
             }}
-          />
+          >
+            Login
+          </button>
           <p>
             dont have an account?{" "}
             <span onClick={() => navigate("/")} style={{ color: "whitesmoke" }}>
