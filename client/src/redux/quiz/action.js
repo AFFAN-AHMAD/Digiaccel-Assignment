@@ -3,14 +3,20 @@ import axios from "axios";
 export const actionTypes = {
   ADD_ONE_ANSWER_CORRECT: "ADD_ONE_ANSWER_CORRECT",
   ADD_TWO_ANSWERS_CORRECT: "ADD_TWO_ANSWERS_CORRECT",
+
   CREATE_ONE_ANSWER_CORRECT_MCQ: "CREATE_ONE_ANSWER_CORRECT_MCQ",
   CREATE_TWO_ANSWER_CORRECT_MCQ: "CREATE_TWO_ANSWER_CORRECT_MCQ",
+
+  GENERATE_QUIZ_SUCCESS: "GENERATE_QUIZ_SUCCESS",
+  GENERATE_QUIZ_FAILED: "GENERATE_QUIZ_FAILED",
+
+  SET_INITIAL: "SET_INITIAL",
 };
 
 export const addOneCorrect =
   ({ quest, token }) =>
   (dispatch) => {
-    console.log("token in addOneCorrect Action", token);
+    // console.log("token in addOneCorrect Action", token);
     axios
       .post("http://localhost:8080/auth/addQuestion", quest, {
         headers: {
@@ -18,7 +24,7 @@ export const addOneCorrect =
         },
       })
       .then((res) => {
-        console.log("data in action in quiz", res.data);
+        // console.log("data in action in quiz", res.data);
         dispatch({
           type: actionTypes.ADD_ONE_ANSWER_CORRECT,
           payload: res.data,
@@ -50,3 +56,33 @@ export const addTwoAnswersCorrect =
         console.log(er, "could not add the question");
       });
   };
+
+export const generateQuiz =
+  ({ typeOfQuiz, token }) =>
+  (dispatch) => {
+    axios
+      .post("http://localhost:8080/auth/createQuiz", typeOfQuiz, {
+        headers: {
+          token: token,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        dispatch({
+          type: actionTypes.GENERATE_QUIZ_SUCCESS,
+          payload: res.data,
+        });
+      })
+
+      .catch((err) => {
+        console.log(err);
+        dispatch({
+          type: actionTypes.GENERATE_QUIZ_FAILED,
+          payload: err.response.data.message,
+        });
+      });
+  };
+
+export const setInit = (payload) => (dispatch) => {
+  dispatch({ type: actionTypes.SET_INITIAL, payload: payload });
+};

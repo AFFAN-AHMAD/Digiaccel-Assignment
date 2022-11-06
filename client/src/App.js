@@ -6,6 +6,8 @@ import User from "./pages/user/User";
 import Admin from "./pages/admin/Admin";
 import Quiz from "./pages/admin/quiz/Quiz";
 import Question from "./pages/admin/question/Question";
+import LiveTests from "./pages/admin/liveTests/LiveTests";
+import CurrentTest from "./pages/admin/currentTest/CurrentTest";
 function App() {
   return (
     <div className="App">
@@ -16,6 +18,9 @@ function App() {
         <Route path={"/admin"} element={<Admin />}>
           <Route path={""} element={<Question />} />
           <Route path={"generate"} element={<Quiz />} />
+          <Route path={"tests"} element={<LiveTests />} />
+
+          <Route path={"tests/:id"} element={<CurrentTest />} />
         </Route>
         <Route path={"/user"} element={<User />} />
       </Routes>

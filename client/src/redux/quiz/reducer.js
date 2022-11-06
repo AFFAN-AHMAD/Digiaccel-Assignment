@@ -3,6 +3,9 @@ const init = {
   twoCorrect: [],
   history: [],
   quizes: [],
+  isError: false,
+  isSuccess: false,
+  message: "",
 };
 
 const quizReducer = (state = init, { type, payload }) => {
@@ -16,6 +19,26 @@ const quizReducer = (state = init, { type, payload }) => {
       return {
         ...state,
         twoCorrect: [...state.twoCorrect, payload],
+      };
+
+    case "GENERATE_QUIZ_SUCCESS":
+      return {
+        ...state,
+        isError: false,
+        isSuccess: true,
+        message: payload.message,
+      };
+    case "GENERATE_QUIZ_FAILED":
+      return {
+        ...state,
+        isSuccess: false,
+        isError: true,
+        message: payload,
+      };
+    case "SET_INITIAL":
+      return {
+        ...state,
+        ...payload,
       };
     default:
       return state;

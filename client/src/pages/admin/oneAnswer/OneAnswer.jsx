@@ -11,8 +11,9 @@ const OneAnswer = () => {
   const [incorrectAnswer2, setIncorrectAnswer2] = useState("");
   const [incorrectAnswer3, setIncorrectAnswer3] = useState("");
 
-  const { token } = useSelector((state) => state.user);
+  let { token } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const localToken = JSON.parse(localStorage.getItem("token"));
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -25,18 +26,22 @@ const OneAnswer = () => {
     ) {
       return alert("all feilds are required");
     }
-    setAllAnswers(
-      correctAnswer,
-      incorrectAnswer1,
-      incorrectAnswer2,
-      incorrectAnswer3
-    );
+
+    setAllAnswers([]);
+    allAnswers.push(correctAnswer);
+    allAnswers.push(incorrectAnswer1);
+    allAnswers.push(incorrectAnswer2);
+    allAnswers.push(incorrectAnswer3);
+    console.log("all answers", allAnswers);
     let quest = {
       question,
       correctAnswer,
       allAnswers,
       difficulty,
     };
+    if (!token) {
+      token = localToken;
+    }
     console.log("quest in one quest", quest);
     dispatch(addOneCorrect({ quest, token }));
   };
@@ -60,9 +65,7 @@ const OneAnswer = () => {
             onChange={(e) => setDifficulty(e.target.value)}
             className={styles.select}
           >
-            <option value={1} className={styles.option}>
-              1
-            </option>
+            <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
             <option value={4}>4</option>

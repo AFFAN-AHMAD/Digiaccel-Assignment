@@ -16,6 +16,12 @@ const Navbar = () => {
       >
         Generate Quiz
       </Link>
+      <Link
+        style={{ textDecoration: "none", color: "white", fontSize: "18px" }}
+        to={"/admin/tests"}
+      >
+        Tests
+      </Link>
     </div>
   );
 };

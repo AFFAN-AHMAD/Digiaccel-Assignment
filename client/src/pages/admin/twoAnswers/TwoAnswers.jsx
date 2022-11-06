@@ -12,7 +12,11 @@ const TwoAnswers = () => {
   const [incorrectAnswer1, setIncorrectAnswer1] = useState("");
   const [incorrectAnswer2, setIncorrectAnswer2] = useState("");
 
-  const { token } = useSelector((state) => state.user);
+  let { token } = useSelector((state) => state.user);
+  const localToken = JSON.parse(localStorage.getItem("token"));
+  if (!token) {
+    token = localToken;
+  }
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,24 +30,24 @@ const TwoAnswers = () => {
       return alert("all feilds required");
     }
 
-    //  correct answers array
-    setCorrectAnswers([correctAnswer1, correctAnswer2]);
+    setCorrectAnswers([]);
+    correctAnswer.push(correctAnswer1);
+    correctAnswer.push(correctAnswer2);
 
-    // all answers array
-    setAllAnswers([
-      correctAnswer1,
-      correctAnswer2,
-      incorrectAnswer1,
-      incorrectAnswer2,
-    ]);
-
+    setAllAnswers([]);
+    allAnswers.push(correctAnswer1);
+    allAnswers.push(correctAnswer2);
+    allAnswers.push(incorrectAnswer1);
+    allAnswers.push(incorrectAnswer2);
+    // console.log(correctAnswer1, correctAnswer2);
+    // console.log("a;;l", allAnswers);
     let quest = {
       question,
       correctAnswer,
       allAnswers,
       difficulty,
     };
-    console.log(quest);
+    // console.log(quest);
     dispatch(addTwoAnswersCorrect({ quest, token }));
   };
   return (

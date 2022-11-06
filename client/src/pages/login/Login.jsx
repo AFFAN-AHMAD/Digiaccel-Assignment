@@ -28,7 +28,7 @@ const Login = () => {
       try {
         localStorage.setItem("token", JSON.stringify(token));
         console.log("token received", token);
-        dispatch(verifyRole(token));
+        dispatch(verifyRole(token));  
       } catch (err) {
         console.log(err);
       }

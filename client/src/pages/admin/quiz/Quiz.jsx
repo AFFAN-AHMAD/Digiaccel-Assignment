@@ -1,31 +1,45 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./quiz.module.css";
-
+import { generateQuiz, setInit } from "../../../redux/quiz/action";
+import { useEffect } from "react";
+import { useRef } from "react";
 const Quiz = () => {
   const [typeOfQuiz, setTypeOfQuiz] = useState("type1");
-  const { token } = useSelector((state) => state.user);
+  let { token } = useSelector((state) => state.user);
+  const { isError, isSuccess, message } = useSelector((state) => state.quiz);
+  const myToken = JSON.parse(localStorage.getItem("token"));
+  const dispatch = useDispatch();
+  const change = useRef();
+  change.current = true;
   const createQuiz = (e) => {
-    console.log("sub");
+    console.log("token", token);
     e.preventDefault();
+    if (!token) {
+      token = myToken;
+    }
     if (token) {
-      axios
-        .post("http://localhost:8080/auth/createQuiz", typeOfQuiz, {
-          headers: {
-            token: token,
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-          // setQuestions(res.data);
-        })
-
-        .catch((err) => console.log(err));
+      dispatch(generateQuiz({ typeOfQuiz, token }));
+      setTimeout(() => {
+        change.current == true
+          ? (change.current = false)
+          : (change.current = true);
+      }, 500);
     } else {
       console.log("token required");
     }
   };
+  useEffect(() => {
+    if (isSuccess == true) {
+      alert(message);
+      return dispatch(setInit({ isSuccess: false }));
+    } else if (isError == true) {
+      alert(message);
+      return dispatch(setInit({ isError: false }));
+    }
+  }, [isError, isSuccess]);
+
   return (
     <div className={styles.quizContainer}>
       <h1>Generate a quiz</h1>
@@ -42,18 +56,6 @@ const Quiz = () => {
           <button type="submit">Generate</button>
         </form>
       </div>
-
-      {/* {questions && (
-        <>
-          <h1>show questions</h1>
-          {questions.map((ele) => {
-            <>
-              <p>{ele.question}</p>
-              <p>{ele.allAnswers}</p>
-            </>;
-          })}
-        </>
-      )} */}
     </div>
   );
 };
