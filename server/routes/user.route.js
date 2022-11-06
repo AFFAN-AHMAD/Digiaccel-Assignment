@@ -9,6 +9,7 @@ const verifyUserRole = require("../controllers/verifyUserRole");
 const addQuestion = require("../controllers/addQuestion");
 const twoOrMoreCorrect = require("../controllers/twoOrMoreCorrect");
 const getQuiz = require("../controllers/getQuiz");
+const currentTest = require("../controllers/currentTest");
 
 userRoute.post("/signup", signup);
 userRoute.post("/login", login);
@@ -28,5 +29,7 @@ userRoute.post("/createQuiz", protect, createQuiz);
 // for getting quizes
 userRoute.get("/getQuiz", protect, getQuiz);
 
+// for finding current test
+userRoute.get("/currentTest", protect, currentTest);
 
 module.exports = userRoute;
