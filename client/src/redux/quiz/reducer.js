@@ -6,6 +6,9 @@ const init = {
   isError: false,
   isSuccess: false,
   message: "",
+  currentTest: "",
+  currentTestId: "",
+  currentTestSuccess: false,
 };
 
 const quizReducer = (state = init, { type, payload }) => {
@@ -39,6 +42,19 @@ const quizReducer = (state = init, { type, payload }) => {
       return {
         ...state,
         ...payload,
+      };
+
+    case "GET_CURRENT_TEST_SUCCESS":
+      return {
+        ...state,
+        currentTest: payload.test,
+        currentTestId: payload._id,
+        currentTestSuccess: true,
+      };
+    case "GET_CURRENT_TEST_FAILURE":
+      return {
+        ...state,
+        currentTestSuccess: false,
       };
     default:
       return state;

@@ -1,0 +1,10 @@
+.container{
+    color:white;
+    width:90%;
+    margin:auto
+}
+
+.answerContainer{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+}

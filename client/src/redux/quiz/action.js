@@ -11,6 +11,9 @@ export const actionTypes = {
   GENERATE_QUIZ_FAILED: "GENERATE_QUIZ_FAILED",
 
   SET_INITIAL: "SET_INITIAL",
+
+  GET_CURRENT_TEST_SUCCESS: "GET_CURRENT_TEST_SUCCESS",
+  GET_CURRENT_TEST_FAILURE: "GET_CURRENT_TEST_FAILURE",
 };
 
 export const addOneCorrect =
@@ -86,3 +89,30 @@ export const generateQuiz =
 export const setInit = (payload) => (dispatch) => {
   dispatch({ type: actionTypes.SET_INITIAL, payload: payload });
 };
+
+export const getCurrent =
+  ({ id, token }) =>
+  (dispatch) => {
+    console.log("token in getCurrent", token);
+    axios
+      .get("http://localhost:8080/auth/currentTest", {
+        headers: {
+          token: token,
+          id: id,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch({
+          type: actionTypes.GET_CURRENT_TEST_SUCCESS,
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({
+          type: actionTypes.GET_CURRENT_TEST_FAILURE,
+          payload: "loading failed",
+        });
+      });
+  };
