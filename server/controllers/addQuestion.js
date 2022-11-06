@@ -3,6 +3,7 @@ const OneAnswerModel = require("../models/OneCorrectAnswer.model");
 const addQuestion = async (req, res) => {
   try {
     let { question, correctAnswer, allAnswers,difficulty } = req.body;
+    console.log("question",question)
     let quest = await OneAnswerModel({
       question,
       allAnswers,
