@@ -24,7 +24,7 @@ export const addOneCorrect =
   (dispatch) => {
     // console.log("token in addOneCorrect Action", token);
     axios
-      .post("http://localhost:8080/auth/addQuestion", quest, {
+      .post("https://digiappassignment.herokuapp.com/auth/addQuestion", quest, {
         headers: {
           token: token,
         },
@@ -47,7 +47,7 @@ export const addTwoAnswersCorrect =
   (dispatch) => {
     console.log("token in addTwoAnswersCorrect Action", token);
     axios
-      .post("http://localhost:8080/auth/twoOrMore", quest, {
+      .post("https://digiappassignment.herokuapp.com/auth/twoOrMore", quest, {
         headers: {
           token: token,
         },
@@ -68,7 +68,7 @@ export const generateQuiz =
   ({ typeOfQuiz, token }) =>
   (dispatch) => {
     axios
-      .post("http://localhost:8080/auth/createQuiz", typeOfQuiz, {
+      .post("https://digiappassignment.herokuapp.com/auth/createQuiz", typeOfQuiz, {
         headers: {
           token: token,
         },
@@ -99,7 +99,7 @@ export const getCurrent =
   (dispatch) => {
     console.log("token in getCurrent", token);
     axios
-      .get("http://localhost:8080/auth/currentTest", {
+      .get("https://digiappassignment.herokuapp.com/auth/currentTest", {
         headers: {
           token: token,
           id: id,

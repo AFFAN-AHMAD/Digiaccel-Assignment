@@ -20,7 +20,7 @@ export const actionTypes = {
 export const userSignup = (payload) => (dispatch) => {
   console.log("payload", payload);
   axios
-    .post("http://localhost:8080/auth/signup", payload)
+    .post("https://digiappassignment.herokuapp.com/auth/signup", payload)
     .then((res) => {
       console.log(res.data, "data");
       dispatch({ type: actionTypes.SIGNUP_SUCCESSFULL, payload: res.data });
@@ -37,7 +37,7 @@ export const userSignup = (payload) => (dispatch) => {
 
 export const userLogin = (payload) => (dispatch) => {
   axios
-    .post("http://localhost:8080/auth/login", payload)
+    .post("https://digiappassignment.herokuapp.com/auth/login", payload)
     .then((res) => {
       // console.log(res);
       dispatch({ type: actionTypes.LOGIN_SUCCESSFULL, payload: res.data });
@@ -54,7 +54,7 @@ export const userLogin = (payload) => (dispatch) => {
 export const verifyRole = (payload) => (dispatch) => {
   console.log("token in verifyRole in action", payload);
   axios
-    .get("http://localhost:8080/auth/verifyUserRole", {
+    .get("https://digiappassignment.herokuapp.com/auth/verifyUserRole", {
       headers: {
         token: payload,
       },

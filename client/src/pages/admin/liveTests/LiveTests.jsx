@@ -23,7 +23,7 @@ const LiveTests = () => {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:8080/auth/getQuiz", {
+      .get("https://digiappassignment.herokuapp.com/auth/getQuiz", {
         headers: {
           token: token,
         },

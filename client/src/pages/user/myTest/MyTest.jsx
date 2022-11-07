@@ -145,8 +145,8 @@ const MyTest = () => {
           </div>
         </div>
       ) : (
-        <button onClick={() => handleStart()} style={{ margin: "auto" }}>
-          Start
+        <button onClick={() => handleStart()} style={{ margin: "auto" ,marginTop:"150px"}}>
+          Start Test
         </button>
       )}
     </div>
