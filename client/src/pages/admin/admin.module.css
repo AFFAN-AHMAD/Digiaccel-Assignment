@@ -2,10 +2,11 @@
     /* display: flex; */
     width: 100%;
     justify-content: space-between;
-    height: 100%;
     margin: 20px auto;
     box-sizing: border-box;
     text-align: center;
+    padding: 20px;
+    margin: 10px;
 }
 
 .questContainer{
@@ -24,4 +25,8 @@
 }
 .label{
     font-size: 30px;
+}
+
+@media screen and (max-width:550px) {
+    
 }

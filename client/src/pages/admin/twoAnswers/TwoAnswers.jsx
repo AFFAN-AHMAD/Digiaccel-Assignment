@@ -64,12 +64,7 @@ const TwoAnswers = () => {
         <div className={styles.question}>
           <label className={styles.label}>Question</label>
           <textarea
-            style={{
-              minWidth: "350px",
-              minHeight: "50px",
-              display: "block",
-              margin: "auto",
-            }}
+            className={styles.questionText}
             onChange={(e) => {
               console.log(e.target.value);
               setQuestion(e.target.value);
@@ -97,14 +92,14 @@ const TwoAnswers = () => {
         <div>
           <label className={styles.label}>Correct Answers</label>
           <div className={styles.inputsContainer}>
-            <label className={styles.label}>1</label>{" "}
+            {/* <label className={styles.label}>1</label>{" "} */}
             <textarea
               className={styles.textarea}
               onChange={(e) => setCorrectAnswer1(e.target.value)}
             ></textarea>
           </div>
           <div className={styles.inputsContainer}>
-            <label className={styles.label}>2</label>
+            {/* <label className={styles.label}>2</label> */}
             <textarea
               className={styles.textarea}
               onChange={(e) => setCorrectAnswer2(e.target.value)}
@@ -114,14 +109,14 @@ const TwoAnswers = () => {
         <div style={{ marginTop: "20px" }}>
           <label className={styles.label}>Incorrect Answers</label>
           <div className={styles.inputsContainer}>
-            <label className={styles.label}>1</label>
+            {/* <label className={styles.label}>1</label> */}
             <textarea
               className={styles.textarea}
               onChange={(e) => setIncorrectAnswer1(e.target.value)}
             ></textarea>
           </div>
           <div className={styles.inputsContainer}>
-            <label className={styles.label}>2</label>
+            {/* <label className={styles.label}>2</label> */}
             <textarea
               className={styles.textarea}
               onChange={(e) => setIncorrectAnswer2(e.target.value)}

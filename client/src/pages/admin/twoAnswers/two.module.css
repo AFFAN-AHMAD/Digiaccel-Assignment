@@ -1,10 +1,9 @@
 .container {
   /* border: 1px solid yellow */
-  
 }
 
-.container>label {
-    margin: "10px"
+.container > label {
+  margin: "10px";
 }
 .label {
   height: 30px;
@@ -39,10 +38,40 @@
   max-width: 250px;
   min-height: 30px;
   max-height: 30px;
-    /* border: 1px solid red; */
+  /* border: 1px solid red; */
 }
 
-.button{
-  width:100px;
+.button {
+  width: 100px;
   border-radius: 10%;
+}
+
+.questionText {
+  min-width: 350px;
+  min-height: 50px;
+  display: block;
+  margin: auto;
+}
+
+
+@media screen and (max-width:500px) {
+.questionText{
+  min-width: 100px;
+    max-width: 350px;
+    width: 200px;
+    max-height: 80px;
+    height: 70px;
+    margin-top: 10px;
+}
+ .label {
+   padding-top: 15px;
+ }
+
+ .textarea1,
+ .textarea {
+   min-width: 0px;
+   max-width: 200px;
+   width: 150px;
+   margin-top: 10px;
+ }
 }

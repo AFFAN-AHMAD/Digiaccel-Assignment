@@ -60,12 +60,11 @@ const OneAnswer = () => {
         <div className={styles.question}>
           <label className={styles.label}>Question</label>
           <textarea
-            className={styles.textarea}
+            className={styles.questionText}
             onChange={(e) => {
               console.log(e.target.value);
               setQuestion(e.target.value);
             }}
-            style={{ minWidth: "350px", minHeight: "50px", marginTop: "4px" }}
           ></textarea>
         </div>
         <div>
@@ -96,21 +95,21 @@ const OneAnswer = () => {
         <div className={styles.inputsContainer}>
           <label className={styles.label}>Incorrect Answers</label>
           <div>
-            <label className={styles.label}>1</label>
+            {/* <label className={styles.label}>1</label> */}
             <textarea
               className={styles.textarea1}
               onChange={(e) => setIncorrectAnswer1(e.target.value)}
             ></textarea>
           </div>
           <div className={styles.inputsContainer}>
-            <label className={styles.label}>2</label>
+            {/* <label className={styles.label}>2</label> */}
             <textarea
               className={styles.textarea1}
               onChange={(e) => setIncorrectAnswer2(e.target.value)}
             ></textarea>{" "}
           </div>
           <div className={styles.inputsContainer}>
-            <label className={styles.label}>3</label>
+            {/* <label className={styles.label}>3</label> */}
             <textarea
               className={styles.textarea1}
               onChange={(e) => setIncorrectAnswer3(e.target.value)}

@@ -1,43 +1,79 @@
-.container{
-    /* border:1px solid yellow */
+.container {
+  /* border:1px solid yellow */
+  margin-bottom: 20px;
 }
-.container>label{
-    margin:"10px"
+.container > label {
+  margin: "10px";
 }
 .label {
-    height: 30px;
-    font-size: 35px;
-    margin:30px 10px
-    /* width: 50%; */
+  height: 30px;
+  font-size: 35px;
+  margin: 30px 10px;
+  /* width: 50%; */
 }
-.question{
-    display: block;
-    margin-bottom: 10px;
+.question {
+  display: block;
+  margin-bottom: 10px;
 }
-.inputsContainer{
-    margin-top: 5px;
+.inputsContainer {
+  margin-top: 5px;
 }
 .input,
-.select ,
-.textarea{
-    /* width:120px; */
-    text-align: center;
-    display: block;
-    margin: auto;
-    height: 20px;
+.select,
+.textarea {
+  /* width:120px; */
+  text-align: center;
+  display: block;
+  margin: auto;
+  height: 20px;
 }
-.textarea,.textarea1{
-    min-width: 250px;
-    max-width: 250px;
-    min-height: 30px;
-    max-height: 30px;
+.textarea,
+.textarea1 {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 30px;
+  max-height: 30px;
+  margin-top: 10px;
 }
 
-.select{
-    width:120px;
+.select {
+  width: 120px;
 }
 
 .button {
-    width: 100px;
-    border-radius: 10%;
+  width: 100px;
+  border-radius: 10%;
+}
+
+
+.questionText {
+  min-width: 350px;
+  min-height: 50px;
+  margin-top: 4px;
+  text-align: center;
+  display: block;
+  margin: auto;
+  height: 20px;
+  margin-top: 10px;
+}
+
+
+@media screen and (max-width: 500px) {
+    .questionText{
+        min-width: 100px;
+        max-width: 350px;
+        width:200px;
+        max-height: 80px;
+        height:70px;
+        margin-top: 10px;
+    }
+    .label{
+      padding-top: 10px;
+    }
+    .textarea1,.textarea{
+      min-width: 0px;
+      max-width: 200px;
+      width:150px;
+      margin-top: 10px;
+    }
 }

@@ -93,10 +93,12 @@ const Login = () => {
             className={styles.input}
             type="submit"
             style={{
-              height: "40px",
+              // height: "40px",
               padding: "10px",
               fontSize: "20px",
               borderRadius: "10%",
+              paddingBottom:"30px",
+              border:"1px solid white"
             }}
           >
             Login

@@ -2,16 +2,16 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
 import { logOut } from "../../../redux/user/action";
-
+import styles from "./nav.module.css";
 const Navbar = () => {
-  const dispatch = useDispatch()
-  const handleLogOut = ()=>{
-    console.log("handleLogouttttttttttttttttt")
+  const dispatch = useDispatch();
+  const handleLogOut = () => {
+    console.log("handleLogouttttttttttttttttt");
     localStorage.removeItem("token");
     dispatch(logOut());
-  }
+  };
   return (
-    <div style={{ display: "flex", justifyContent: "space-around" }}>
+    <div className={styles.container}>
       <Link
         style={{ textDecoration: "none", color: "white", fontSize: "18px" }}
         to={"/admin"}
@@ -30,7 +30,11 @@ const Navbar = () => {
       >
         Tests
       </Link>
-      <button onClick={()=>handleLogOut()}>Log Out</button>
+      <div>
+        <button onClick={() => handleLogOut()} className={styles.button}>
+          Log Out
+        </button>
+      </div>
     </div>
   );
 };

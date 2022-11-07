@@ -39,3 +39,30 @@
     margin: auto;
     height: 20px;
 }
+
+@media screen and (max-width:650px) {
+    .form{
+        padding-bottom: 15px;
+    }
+    .input{
+        width:70%
+    }
+    .label{
+        font-size: 25px;
+    }
+}
+
+
+@media screen and (max-width:450px) {
+    .form {
+        padding-bottom: 30px;
+    }
+
+    .input {
+        width: 70%
+    }
+
+    .label {
+        font-size: 25px;
+    }
+}
