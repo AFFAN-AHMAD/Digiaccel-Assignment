@@ -117,11 +117,14 @@ const Signup = () => {
             className={styles.input}
             type="submit"
             style={{
-              height: "40px",
+              // height: "40px",
               padding: "10px",
               fontSize: "20px",
               borderRadius: "10%",
               cursor: "pointer",
+              border: "1px solid white",
+              paddingBottom:"30px"
+            
             }}
           >
             Signup
