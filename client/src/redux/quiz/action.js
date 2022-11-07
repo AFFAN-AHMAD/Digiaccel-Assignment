@@ -122,5 +122,6 @@ export const getCurrent =
   };
 
 export const setScore = (payload) => (dispatch) => {
+  console.log("payload in action secsocr",payload)
   dispatch({ type: actionTypes.SET_SCORE, payload: payload });
 };

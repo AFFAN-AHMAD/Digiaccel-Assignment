@@ -1,7 +1,8 @@
 const init = {
   oneCorrect: [],
   twoCorrect: [],
-  history: [],
+  score: [],
+  noOfQuestions: 0,
   quizes: [],
   isError: false,
   isSuccess: false,
@@ -55,6 +56,12 @@ const quizReducer = (state = init, { type, payload }) => {
       return {
         ...state,
         currentTestSuccess: false,
+      };
+    case "SET_SCORE":
+      return {
+        ...state,
+        score: [...payload.scores],
+        noOfQuestions: payload.noOfQuestions,
       };
 
     default:
