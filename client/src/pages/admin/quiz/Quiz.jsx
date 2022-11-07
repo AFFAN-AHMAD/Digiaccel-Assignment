@@ -55,7 +55,7 @@ const Quiz = () => {
           <label style={{ fontSize: "20px" }}>Type of Quiz</label>
           <select
             onChange={(e) => setTypeOfQuiz(e.target.value)}
-            style={{ display: "block", margin: "20px" }}
+            className={styles.select}
           >
             <option value="type1">Only One Answer Correct</option>
             <option value="type2">More Than One Answer Correct</option>

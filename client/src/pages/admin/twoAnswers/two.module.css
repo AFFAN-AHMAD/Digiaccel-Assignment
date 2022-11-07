@@ -1,5 +1,6 @@
 .container {
   /* border: 1px solid yellow */
+    margin-bottom: 20px;
 }
 
 .container > label {
