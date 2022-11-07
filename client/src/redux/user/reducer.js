@@ -41,6 +41,23 @@ const userReducer = (state = initState, { payload, type }) => {
         ...state,
         ...payload,
       };
+
+    case "SIGN_OUT":
+      return {
+        ...state,
+        name: "",
+        email: "",
+        password: "",
+        role: "",
+        token: "",
+        signupMessage: "",
+        loginMessage: "",
+      };
+    case "REMOVE_SIGNUP_MESSAGE":
+      return {
+        ...state,
+        signupMessage: "",
+      };
     default:
       return state;
   }

@@ -1,7 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
+import { logOut } from "../../../redux/user/action";
 
 const Navbar = () => {
+  const dispatch = useDispatch()
+  const handleLogOut = ()=>{
+    console.log("handleLogouttttttttttttttttt")
+    localStorage.removeItem("token");
+    dispatch(logOut());
+  }
   return (
     <div style={{ display: "flex", justifyContent: "space-around" }}>
       <Link
@@ -22,6 +30,7 @@ const Navbar = () => {
       >
         Tests
       </Link>
+      <button onClick={()=>handleLogOut()}>Log Out</button>
     </div>
   );
 };

@@ -56,6 +56,7 @@ const quizReducer = (state = init, { type, payload }) => {
         ...state,
         currentTestSuccess: false,
       };
+
     default:
       return state;
   }

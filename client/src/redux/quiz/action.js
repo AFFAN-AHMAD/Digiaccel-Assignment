@@ -32,6 +32,7 @@ export const addOneCorrect =
           type: actionTypes.ADD_ONE_ANSWER_CORRECT,
           payload: res.data,
         });
+        alert("question added succesfully")
       })
       .catch((er) => {
         console.log(er, "could not add the question");

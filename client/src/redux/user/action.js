@@ -1,4 +1,5 @@
 import axios from "axios";
+import { dispatch } from "d3";
 
 export const actionTypes = {
   // signup actions
@@ -8,6 +9,10 @@ export const actionTypes = {
   // login actions
   LOGIN_SUCCESSFULL: "LOGIN_SUCCESSFULL",
   LOGIN_FAILED: "LOGIN_FAILED",
+
+  // signOut
+  SIGN_OUT: "SIGN_OUT",
+  REMOVE_SIGNUP_MESSAGE:"REMOVE_SIGNUP_MESSAGE",
 
   VERIFIED_ROLE_SUCCESSFULL: "VERIFIED_ROLE_SUCCESSFULL",
 };
@@ -63,3 +68,12 @@ export const verifyRole = (payload) => (dispatch) => {
     })
     .catch((err) => console.log("error in verifyRole", err));
 };
+
+export const logOut = () => (dispatch) => {
+  console.log("logout")
+  dispatch({ type: actionTypes.SIGN_OUT });
+};
+
+export const removeSignupMessage = () =>(dispatch)=>{
+    dispatch({ type: actionTypes.REMOVE_SIGNUP_MESSAGE });
+}
