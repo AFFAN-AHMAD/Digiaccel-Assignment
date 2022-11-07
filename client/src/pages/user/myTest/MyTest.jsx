@@ -32,12 +32,18 @@ const MyTest = () => {
   }, [token]);
 
   const svgRef = useRef();
-  
 
   useEffect(() => {
     console.log("id in useEffect", id);
     dispatch(getCurrent({ id, token }));
   }, []);
+
+  useEffect(()=>{
+     console.log("scores in effect", scores);
+     console.log("noOfQuestions in effect", noOfQuestions);
+  },[scores])
+
+
 
   useEffect(() => {
     const w = 600;
@@ -78,9 +84,14 @@ const MyTest = () => {
     setThisTest([...currentTest]);
   }, [currentTest]);
 
-  const handleClick = () => {
+  const handleStart = () => {
+    setEnd(false);
+    setDifficulty(5)
+    setTotal(0)
+    setScores([])
+    setNoOfQuestions(0)
     thisTest.map((ele) => {
-      if (ele.difficulty == difficulty) {
+      if (ele.difficulty == 5) {
         return setCurrentQuestion(ele);
       }
     });
@@ -90,7 +101,7 @@ const MyTest = () => {
   };
 
   //   useEffect(() => {
-  //     // handleClick();
+  //     // handleStart();
   //   }, [difficulty]);
   const handleChange = () => {
     thisTest.map((ele) => {
@@ -103,6 +114,9 @@ const MyTest = () => {
   const handleCheck = (answer) => {
     if (answer == currentQuestion.correctAnswer) {
       if (difficulty == 10) {
+         setTotal((total) => total + 5);
+         let curr = scores[scores.length - 1] + 5;
+         setScores([...scores, total]);
         setEnd(true);
         return alert(
           "quiz ended, you correctly answered question of diffculty level 10"
@@ -115,6 +129,9 @@ const MyTest = () => {
       handleChange();
     } else {
       if (difficulty == 1) {
+         setTotal((total) => total - 2);
+         let curr = scores[scores.length - 1] - 2;
+         setScores([...scores, total]);
         setEnd(true);
         return alert(
           "quiz ended,you answered the question of difficulty level 1 wrongly"
@@ -127,10 +144,13 @@ const MyTest = () => {
       handleChange();
     }
     setNoOfQuestions((q) => q + 1);
+
+    console.log("scores", scores);
+    console.log("noOfQuestions", noOfQuestions);
   };
   return (
     <div style={{ textAlign: "center" }}>
-      {start == true ? (
+      {start == true && end == false ? (
         <div>
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <h1>Total Score: {total}</h1>
@@ -155,7 +175,7 @@ const MyTest = () => {
           <svg ref={svgRef} />
         </div>
       ) : (
-        <button onClick={() => handleClick()} style={{ margin: "auto" }}>
+        <button onClick={() => handleStart()} style={{ margin: "auto" }}>
           Start
         </button>
       )}

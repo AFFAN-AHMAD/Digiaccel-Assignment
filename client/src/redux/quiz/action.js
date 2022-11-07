@@ -1,4 +1,5 @@
 import axios from "axios";
+import { dispatch } from "d3";
 
 export const actionTypes = {
   ADD_ONE_ANSWER_CORRECT: "ADD_ONE_ANSWER_CORRECT",
@@ -14,6 +15,8 @@ export const actionTypes = {
 
   GET_CURRENT_TEST_SUCCESS: "GET_CURRENT_TEST_SUCCESS",
   GET_CURRENT_TEST_FAILURE: "GET_CURRENT_TEST_FAILURE",
+
+  SET_SCORE: "SET_SCORE",
 };
 
 export const addOneCorrect =
@@ -32,7 +35,7 @@ export const addOneCorrect =
           type: actionTypes.ADD_ONE_ANSWER_CORRECT,
           payload: res.data,
         });
-        alert("question added succesfully")
+        alert("question added succesfully");
       })
       .catch((er) => {
         console.log(er, "could not add the question");
@@ -117,3 +120,7 @@ export const getCurrent =
         });
       });
   };
+
+export const setScore = (payload) => (dispatch) => {
+  dispatch({ type: actionTypes.SET_SCORE, payload: payload });
+};
