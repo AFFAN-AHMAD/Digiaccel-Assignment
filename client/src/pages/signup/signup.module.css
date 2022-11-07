@@ -54,7 +54,7 @@ margin-top: -20px;
 }
 
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:1200px) {
     .container{
         padding:20px;
         padding-bottom: 50px;
