@@ -10,9 +10,14 @@ const LiveTests = () => {
   let { token } = useSelector((state) => state.user);
   const myToken = JSON.parse(localStorage.getItem("token"));
   const navigate = useNavigate();
-  if (!token) {
-    token = myToken;
-  }
+  useEffect(() => {
+    if (!token) {
+      token = myToken;
+    }
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token]);
   function handleClick(id) {
     navigate(`/admin/tests/${id}`);
   }

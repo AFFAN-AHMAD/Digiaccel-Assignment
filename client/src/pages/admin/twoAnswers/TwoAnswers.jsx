@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { addTwoAnswersCorrect } from "../../../redux/quiz/action";
 import styles from "./two.module.css";
 const TwoAnswers = () => {
@@ -13,10 +15,16 @@ const TwoAnswers = () => {
   const [incorrectAnswer2, setIncorrectAnswer2] = useState("");
 
   let { token } = useSelector((state) => state.user);
-  const localToken = JSON.parse(localStorage.getItem("token"));
-  if (!token) {
-    token = localToken;
-  }
+  const myToken = JSON.parse(localStorage.getItem("token"));
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!token) {
+      token = myToken;
+    }
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token]);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();

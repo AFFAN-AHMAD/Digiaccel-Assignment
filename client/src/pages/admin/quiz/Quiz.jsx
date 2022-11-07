@@ -5,6 +5,7 @@ import styles from "./quiz.module.css";
 import { generateQuiz, setInit } from "../../../redux/quiz/action";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { useNavigate } from "react-router";
 const Quiz = () => {
   const [typeOfQuiz, setTypeOfQuiz] = useState("type1");
   let { token } = useSelector((state) => state.user);
@@ -13,12 +14,18 @@ const Quiz = () => {
   const dispatch = useDispatch();
   const change = useRef();
   change.current = true;
+   const navigate = useNavigate();
+   useEffect(() => {
+     if (!token) {
+       token = myToken;
+     }
+     if (!token) {
+       navigate("/login");
+     }
+   }, [token]);
   const createQuiz = (e) => {
     console.log("token", token);
     e.preventDefault();
-    if (!token) {
-      token = myToken;
-    }
     if (token) {
       dispatch(generateQuiz({ typeOfQuiz, token }));
       setTimeout(() => {

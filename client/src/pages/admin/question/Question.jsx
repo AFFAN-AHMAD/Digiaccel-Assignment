@@ -6,6 +6,7 @@ import TwoAnswers from "../twoAnswers/TwoAnswers";
 import styles from "../admin.module.css";
 const Question = () => {
   const [typeOfQuest, setTypeOfQuest] = useState("type1");
+  
   return (
     <div>
       <div className={styles.questContainer}>

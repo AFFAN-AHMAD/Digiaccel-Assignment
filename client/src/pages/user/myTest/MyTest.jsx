@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./myTest.module.css";
 import { getCurrent } from "../../../redux/quiz/action";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,11 +21,19 @@ const MyTest = () => {
   const { currentTest, currentTestId, currentTestSuccess } = useSelector(
     (state) => state.quiz
   );
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!token) {
+      token = myToken;
+    }
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token]);
 
   const svgRef = useRef();
-  if (!token) {
-    token = myToken;
-  }
+  
+
   useEffect(() => {
     console.log("id in useEffect", id);
     dispatch(getCurrent({ id, token }));
@@ -39,6 +47,7 @@ const MyTest = () => {
       .attr("width", w)
       .attr("height", h)
       .style("background", "#d3d3d3")
+      .style("margin", "auto")
       .style("margin-top", "50px");
 
     //   scaling
@@ -50,9 +59,10 @@ const MyTest = () => {
     const xScale = d3.scaleLinear().domain([0, noOfQuestions]).range([0, w]);
 
     const generateScaledLine = d3
-    .line()
-    .x(xScale)
-    .y((d, i) => yScale(i))
+      .line()
+      .x(xScale)
+      .y((d, i) => yScale(i))
+      .curve(d3.curveCardinal);
 
     //   setting up data for svg
     svg
@@ -119,13 +129,13 @@ const MyTest = () => {
     setNoOfQuestions((q) => q + 1);
   };
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       {start == true ? (
         <div>
-          <div>
+          <div style={{ display: "flex", justifyContent: "space-around" }}>
             <h1>Total Score: {total}</h1>
             <h1>Difficulty: {difficulty}</h1>
-            <h1>Score table :{scores}</h1>
+            {/* <h1>Score table :{scores}</h1> */}
           </div>
           <h1>{currentQuestion.question}</h1>
           <div>
@@ -142,12 +152,12 @@ const MyTest = () => {
               {currentQuestion.allAnswers[3]}
             </h3>
           </div>
-          <div style={{ width: "80%", textAlign: "center" }}>
-            <svg ref={svgRef} />
-          </div>
+          <svg ref={svgRef} />
         </div>
       ) : (
-        <button onClick={() => handleClick()}>Start</button>
+        <button onClick={() => handleClick()} style={{ margin: "auto" }}>
+          Start
+        </button>
       )}
     </div>
   );

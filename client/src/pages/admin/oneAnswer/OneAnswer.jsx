@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./oneAnswer.module.css";
 import { addOneCorrect } from "../../../redux/quiz/action";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
 const OneAnswer = () => {
   const [question, setQuestion] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState("");
@@ -13,7 +15,16 @@ const OneAnswer = () => {
 
   let { token } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const localToken = JSON.parse(localStorage.getItem("token"));
+  const myToken = JSON.parse(localStorage.getItem("token"));
+   const navigate = useNavigate();
+   useEffect(() => {
+     if (!token) {
+       token = myToken;
+     }
+     if (!token) {
+       navigate("/login");
+     }
+   }, [token]);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -39,9 +50,7 @@ const OneAnswer = () => {
       allAnswers,
       difficulty,
     };
-    if (!token) {
-      token = localToken;
-    }
+   
     console.log("quest in one quest", quest);
     dispatch(addOneCorrect({ quest, token }));
   };

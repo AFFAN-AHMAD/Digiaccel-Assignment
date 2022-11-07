@@ -1,4 +1,7 @@
 
 .App{
-    
+            margin: 0;
+            background-color: black;
+            color: peachpuff;
+            height: 100vh;
 }

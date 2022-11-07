@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getCurrent } from "../../../redux/quiz/action";
 import styles from "./currentTest.module.css";
 const CurrentTest = () => {
@@ -14,9 +14,15 @@ const CurrentTest = () => {
   const { currentTest, currentTestId, currentTestSuccess } = useSelector(
     (state) => state.quiz
   );
-  if (!token) {
-    token = myToken;
-  }
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!token) {
+      token = myToken;
+    }
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token]);
   const dispatch = useDispatch();
   useEffect(() => {
     console.log("id in useEffect", id);

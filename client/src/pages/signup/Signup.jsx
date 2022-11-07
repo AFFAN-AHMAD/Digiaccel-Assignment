@@ -33,7 +33,7 @@ const Signup = () => {
     // console.log("submitted");
     e.preventDefault();
     if (!name || !email || !password || !role) {
-      return alert("all feilds required");
+      return alert("all feilds required !!");
     }
     let res = checkPassword(password);
     if (!res.flag) {
