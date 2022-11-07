@@ -20,6 +20,7 @@ const User = () => {
   }, [token]);
   return (
     <div>
+      <h1 style={{margin:"auto",textAlign:"center"}}>User Panel</h1>
       <NavBar/>
       {/* <Live /> */}
       <Outlet/>

@@ -3,6 +3,7 @@
     margin: 0px auto;
     text-align: center;
     width: 30%;
+    padding-bottom: 50px;
 }
 .h1{
     font-size: 50px;
@@ -50,4 +51,36 @@ margin-top: -20px;
     
 .p{
     font-size: 14px;
+}
+
+
+@media screen and (max-width:1000px) {
+    .container{
+        padding:20px;
+        padding-bottom: 50px;
+    }
+        .form{
+        padding-bottom: 20px;
+        text-align: center;
+        }
+    .inputContainers{
+        display: block;
+        align-items: center;
+        text-align: center;
+    }
+    .label{
+        display: block;
+        
+    }
+    .input{
+        border: 1px solid yellow;
+        margin-top: 10px;
+        align-self: center;
+        margin-inline-end: 0px;
+    }
+    .select{
+        margin-top: 10px;
+            align-self: center;
+            margin-inline-end: 0px;
+    }
 }
